@@ -55,22 +55,58 @@ const Cart = () => {
     const delivery = 0;
     const subtotal = calculateTotal();
 
-    const handleCheckout = () => {
-        navigate('/itemdetails',{
-            state: {
-                items: cartItems.map(item => ({
-                    name: item.name,
-                    quantity: item.quantity,
-                    price: item.price,
-                    total: (item.price * item.quantity).toFixed(2)
-                })),
-                subtotal: subtotal,
-                discount: discount,
-                total: subtotal - discount,
-            },
-        }); // Navigate to /card on checkout
-   
+    const handleCheckout = async () => {
+        const userId = localStorage.getItem('userId'); // Example of getting userId from localStorage
+    
+        if (!userId) {
+            console.error('User ID is missing');
+            return;
+        }
+    
+        try {
+            const response = await fetch('http://localhost:3000/api/cart/checkout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    userId,  // Now sending actual user ID
+                    items: cartItems.map(item => ({
+                        productId: item._id,
+                        name: item.name,
+                        quantity: item.quantity,
+                        price: item.price
+                    })),
+                    subtotal: subtotal,
+                    discount: discount,
+                    total: subtotal - discount,
+                })
+            });
+    
+            const data = await response.json();
+            if (response.ok) {
+                console.log('Cart saved:', data);
+                navigate('/itemdetails', {
+                    state: {
+                        items: cartItems.map(item => ({
+                            name: item.name,
+                            quantity: item.quantity,
+                            price: item.price,
+                            total: (item.price * item.quantity).toFixed(2)
+                        })),
+                        subtotal: subtotal,
+                        discount: discount,
+                        total: subtotal - discount,
+                    },
+                });
+            } else {
+                console.error('Error saving cart:', data.message);
+            }
+        } catch (error) {
+            console.error('Error during checkout:', error);
+        }
     };
+    
 
     return (
         <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
@@ -101,7 +137,7 @@ const Cart = () => {
                                             }}
                                         />
                                         {item.name} <br />
-                                        <small>Product Code: {item.productCode}</small>
+                                        
                                     </div>
                                 </td>
                                 <td style={{ padding: '10px' }}>

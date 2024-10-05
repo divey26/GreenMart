@@ -166,7 +166,7 @@ function ItemDetails() {
           <p>Total: ${total?.toFixed(2)}</p>
         </div>
         <SummaryFooter>
-          <AntButton type="primary" style={{ width: '100%' }}>
+          <AntButton type="primary" style={{ width: '100%' }}  onClick={() => navigate('/package')} >
             Proceed
           </AntButton>
         </SummaryFooter>

@@ -167,7 +167,7 @@ function Product() {
 
     const handleModalOk = () => {
         setModal({ ...modal, visible: false });
-        navigate("/checkout");
+        navigate("/itemdetails");
     };
 
     return (
