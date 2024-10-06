@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
 
-import Dash from './Dashboard';
+//import Dash from './Dashboard';
 
 
 // Manager Components
@@ -29,6 +29,14 @@ import Complaint from './complaint/ManageFaqComplain'
 
 import Return from './return/manageReturn'
 
+import AdminOrdPage from "./order/AdminPgae";
+
+import AdminRegister from './Common/AdminRegister';
+import AdminLogin from './Common/AdminLogin';
+import UserTable from './Common/UserTable'; // User details page
+
+
+
 function App() {
  
 
@@ -37,9 +45,9 @@ function App() {
      
 
       <Routes>
-        {/* Home and Product Routes */}
+        {/* Home and Product Routes <Route path='/' element={<Dash />} />*/}
 
-        <Route path='/' element={<Dash />} />
+        
 
 
         {/* Manager & Routes */}
@@ -66,7 +74,13 @@ function App() {
         <Route path="/complaint" element={<Complaint />} />
         <Route path="/returnpro" element={<Return />} />
 
+        <Route path='/order' element={<AdminOrdPage />} />  
 
+
+        <Route path="/" element={<Navigate to="/admin-login" />} />
+        <Route path="/admin-register" element={<AdminRegister />} />
+        <Route path="/admin-login" element={<AdminLogin />} />
+        <Route path="/user-details" element={<UserTable />} /> 
 
         {/* 404 Route */}
         <Route path='*' element={<h2>404: Page Not Found</h2>} />

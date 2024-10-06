@@ -24,6 +24,7 @@ main {
   height: 100%; /* Fill the height of the main container */
   object-fit: cover; /* Ensures the image covers the entire height/width without distortion */
   border-radius: 10px;
+  margin-left: 500px;
 }
 
 .chat{

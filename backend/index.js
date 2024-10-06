@@ -21,7 +21,9 @@ const packagingMaterialsRoutes = require('./routes/packMatRoutes.js');
 const packingOrdersRoutes = require('./routes/packOrdRoutes.js');
 const complaintsRoutes = require('./routes/complaintRoutes.js');
 const returnRoutes = require('./routes/returnRoutes.js');
-
+const AdmincartRoutes = require("./routes/AdminCartRoute.js")
+const AdminRoutes = require("./routes/AdminRoute.js");
+const AdminUserRoutes = require("./routes/AdminUserRoutes.js");
 
 // Load environment variables
 dotenv.config();
@@ -84,7 +86,9 @@ app.use("/api/managers", managerRoutes);  // Manager routes (commented out)
 app.use('/api/delivery-person', deliveryPersonRoutes);  // Delivery person routes (commented out)
 app.use('/api/complaints', complaintsRoutes);
 app.use('/api', returnRoutes);
-
+app.use("/api/cartItems",AdmincartRoutes );
+app.use("api/admin", AdminRoutes);
+app.use("api/AdUsers", AdminUserRoutes);
 
 // Serve frontend in production mode
 if (process.env.NODE_ENV === 'production') {

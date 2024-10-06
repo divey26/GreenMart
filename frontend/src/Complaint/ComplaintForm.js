@@ -18,6 +18,7 @@ const ComplainForm = () => {
     });
 
     const [errors, setErrors] = useState({});
+   
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -33,6 +34,10 @@ const ComplainForm = () => {
             setErrors({ ...errors, image: '' });
         }
     };
+
+    const handleReturn = () => {
+        navigate('/return');  // Navigate to /nm route
+      };
 
     const validateForm = () => {
         const newErrors = {};
@@ -94,7 +99,7 @@ const ComplainForm = () => {
 
     return (
         <div>
-            <section id="complaint-form-section">
+            <section id="">
                 <h1 className='h1r'>Complaint Form</h1>
                 <p>We're here to help! Please fill out this form to report any issues with your order or service.</p>
                 <img src={chat} className='chat' alt='chat'/>
@@ -204,7 +209,7 @@ const ComplainForm = () => {
                             </div>
                              <div className="button-container">
                             <button type="submit" className="btn-submit">Submit Complaint</button>
-                            <button className="btn-return">Return Product</button>
+                            <button className="btn-return" onClick={handleReturn}>Return Product</button>
                             </div>
                             
                         </form>

@@ -101,6 +101,11 @@ const adminUserItems = [
     key: "return",
     icon: <ApartmentOutlined />,
     label: "Return",
+  },
+  {
+    key: "order",
+    icon: <ApartmentOutlined />,
+    label: "Orders",
   }
 
 
@@ -163,14 +168,15 @@ const App = ({ children, userType }) => {
     if (item.key === "return") {
       navigate("/returnpro");
     }
+    if (item.key === "order") {
+      navigate("/order");
+    }
 
   };
 
   const {
     token: { borderRadiusLG },
   } = theme.useToken();
-
-
 
 
 
@@ -207,7 +213,7 @@ const App = ({ children, userType }) => {
 
 
 
-      <Layout style={{ marginLeft: collapsed ? 80 : 200 }}>
+     <Layout style={{ marginLeft: collapsed ? 80 : 200 }}>
 
 
 
