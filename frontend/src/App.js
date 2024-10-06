@@ -19,7 +19,7 @@ import AdminView from './productManagment/AdminView';
 import Dashboard from './productManagment/Dashboard';
 import Cart from './cart/Cart'; // Import the new layout
 import { CartProvider } from "./cart/CartContext"
-
+/*
 // Manager Components
 import Table from './ManagerComponent/table';
 import Deli from './ManagerComponent/DeliveryPersonD'
@@ -28,7 +28,7 @@ import ManagerSignin from './ManagerComponent/ManagerSignin';
 import DeliveryDetails from './ManagerComponent/managerdetails';
 import ManagerUpdateItem from './ManagerComponent/UpdateMnaneger';
 
-
+*/
 
 
 import Product from './ItemComponent/product';
@@ -75,7 +75,7 @@ function App() {
             <Route path='/itemdetails' element={<Card />} />
 
 
-         {/* Manager Routes */}
+         {/* Manager Routes
          <Route path='/table' element={<Table />} />
          <Route path='/delper' element={<Deli />} />
 
@@ -84,7 +84,7 @@ function App() {
          <Route path='/manager/details' element={<DeliveryDetails />} />
          <Route path='/manager/update/:id' element={<ManagerUpdateItem />} />
 
-
+ */}
          { /*payment */}
           <Route path="/start" element={<PaymentPage />} />
           <Route path="/credit-card/:paymentId" element={<CreditCardPaymentForm />} />

@@ -12,8 +12,8 @@ const authRoutes = require('./routes/routes.js');
 const userRoutes = require('./routes/user.js'); 
 const productRoutes = require('./routes/productRoutes');
 const itemRoutes = require('./routes/itemroutes');
-// const managerRoutes = require("./routes/managerroutes");
-// const deliveryPersonRoutes = require('./routes/deliveryperson');
+const managerRoutes = require("./routes/ManagerRoutes.js");
+const deliveryPersonRoutes = require('./routes/DeliperRoutes.js');
 const tableRoutes = require('./Routes/tableRoutes');
 const paymentRoutes = require('./Routes/paymentRoutes');
 const cartRoutes = require('./routes/CartRoutes.js');
@@ -34,13 +34,26 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.static('public'));
 
-// CORS configuration
+
+// CORS configuration to allow any localhost port in development
 app.use(
   cors({
-    origin: "http://localhost:3001", // Allow frontend requests from this origin
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like mobile apps or CURL requests)
+      if (!origin) return callback(null, true);
+
+      // Allow localhost origins on any port
+      const allowedLocalhostPattern = /^http:\/\/localhost:\d+$/;
+      if (allowedLocalhostPattern.test(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     credentials: true, // Allow cookies and credentials to be sent with the request
   })
 );
+
 
 // Session middleware
 app.use(
@@ -67,8 +80,8 @@ app.use('/api/cart', cartRoutes);
 app.use('/api/packaging-materials', packagingMaterialsRoutes);
 app.use('/api/packing-orders', packingOrdersRoutes);
 
-// app.use("/api/managers", managerRoutes);  // Manager routes (commented out)
-// app.use('/api/delivery-person', deliveryPersonRoutes);  // Delivery person routes (commented out)
+app.use("/api/managers", managerRoutes);  // Manager routes (commented out)
+app.use('/api/delivery-person', deliveryPersonRoutes);  // Delivery person routes (commented out)
 
 
 
