@@ -13,7 +13,7 @@ const UserTable = () => {
 
     const fetchUsers = async () => {
         try {
-            const { data } = await axios.get('http://localhost:3000/api/AdUsers', {
+            const { data } = await axios.get('http://localhost:3000/AdUsers', {
                 params: { search, sort },
             });
             console.log('Fetched users:', data); // Log the fetched data
@@ -27,7 +27,7 @@ const UserTable = () => {
         const confirmDelete = window.confirm("Are you sure you want to delete this user?");
         if (confirmDelete) {
             try {
-                await axios.delete(`http://localhost:5000/users/${id}`);
+                await axios.delete(`http://localhost:3000/AdUsers/${id}`);
                 fetchUsers();
             } catch (error) {
                 console.error('Error deleting user:', error);
