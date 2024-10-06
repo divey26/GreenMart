@@ -13,7 +13,7 @@ const UserTable = () => {
 
     const fetchUsers = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/users', {
+            const { data } = await axios.get('http://localhost:3000/api/AdUsers', {
                 params: { search, sort },
             });
             console.log('Fetched users:', data); // Log the fetched data

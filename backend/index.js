@@ -87,8 +87,8 @@ app.use('/api/delivery-person', deliveryPersonRoutes);  // Delivery person route
 app.use('/api/complaints', complaintsRoutes);
 app.use('/api', returnRoutes);
 app.use("/api/cartItems",AdmincartRoutes );
-app.use("api/admin", AdminRoutes);
-app.use("api/AdUsers", AdminUserRoutes);
+app.use("/api/admin", AdminRoutes);
+app.use("/api/AdUsers", AdminUserRoutes);
 
 // Serve frontend in production mode
 if (process.env.NODE_ENV === 'production') {
