@@ -19,8 +19,8 @@ const paymentRoutes = require('./Routes/paymentRoutes');
 const cartRoutes = require('./routes/CartRoutes.js');
 const packagingMaterialsRoutes = require('./routes/packMatRoutes.js');
 const packingOrdersRoutes = require('./routes/packOrdRoutes.js');
-
-
+const complaintsRoutes = require('./routes/complaintRoutes.js');
+const returnRoutes = require('./routes/returnRoutes.js');
 
 
 // Load environment variables
@@ -33,6 +33,7 @@ const PORT = process.env.PORT || 3000;
 // Middleware to handle JSON and static files
 app.use(express.json());
 app.use(express.static('public'));
+app.use(express.static('uploads'));
 
 
 // CORS configuration to allow any localhost port in development
@@ -79,11 +80,10 @@ app.use('/api', paymentRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/api/packaging-materials', packagingMaterialsRoutes);
 app.use('/api/packing-orders', packingOrdersRoutes);
-
 app.use("/api/managers", managerRoutes);  // Manager routes (commented out)
 app.use('/api/delivery-person', deliveryPersonRoutes);  // Delivery person routes (commented out)
-
-
+app.use('/api/complaints', complaintsRoutes);
+app.use('/api', returnRoutes);
 
 
 // Serve frontend in production mode

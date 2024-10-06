@@ -15,7 +15,7 @@ const Navbar = ({ cartCount }) => {
                 <li onClick={() => setMenu("home")}><Link to='/'>Home</Link>{menu === "home" ? <hr /> : <></>}</li>
                 <li onClick={() => setMenu("products")}><Link to='/product'>Products</Link>{menu === "products" ? <hr /> : <></>}</li>
                 <li onClick={() => setMenu("aboutUs")}><Link to='/aboutUs'>About Us</Link>{menu === "aboutUs" ? <hr /> : <></>}</li>
-                <li onClick={() => setMenu("service")}><Link to='/service'>Customer Service</Link>{menu === "service" ? <hr /> : <></>}</li>
+                <li onClick={() => setMenu("service")}><Link to='/complaint'>Customer Service</Link>{menu === "service" ? <hr /> : <></>}</li>
             </ul>
             <div className="navbar-right">
                 <img src={search} alt="Search" className="search" />

@@ -242,6 +242,7 @@ const DeliveryPersonManagementPage = () => {
               <Button
                 type="primary"
                 onClick={exportToPDF}
+                style={{color:'white',backgroundColor:'white'}}
               >
                 Export to PDF
               </Button>
@@ -256,10 +257,20 @@ const DeliveryPersonManagementPage = () => {
               style={{ marginRight: "8px" }}
             />
             <div style={{ marginLeft: "auto", marginRight: "20px" }}>
-              <Button type="primary" icon={<PlusOutlined />} onClick={addNewDeliveryPerson}>
-                Add New Delivery Person
-              </Button>
-            </div>
+  <Button
+    type="primary"
+    icon={<PlusOutlined />}
+    onClick={addNewDeliveryPerson}
+    style={{
+      color: 'white',
+      backgroundColor: 'wheat',
+      border: '1px solid black', // Add border color here
+    }}
+  >
+    Add New Delivery Person
+  </Button>
+</div>
+
           </div>
           <DataGrid
             rows={transformedRows}
@@ -268,25 +279,33 @@ const DeliveryPersonManagementPage = () => {
             disableSelectionOnClick
             autoHeight
           />
-          <Modal
-            open={isAddDeliveryPersonModalVisible}
-            title={editingDeliveryPerson ? "Edit Delivery Person" : "Add New Delivery Person"}
-            okText={editingDeliveryPerson ? "Update" : "Save"}
-            cancelText="Cancel"
-            onCancel={handleCancel}
-            onOk={() => {
-              form
-                .validateFields()
-                .then((values) => {
-                  onFinish(values);
-                })
-                .catch((errorInfo) => {
-                  console.log("Validation Failed:", errorInfo);
-                });
-            }}
-          >
-            <DeliveryPersonForm form={form} onFinish={onFinish} />
-          </Modal>
+      <Modal
+          open={isAddDeliveryPersonModalVisible}
+          title={editingDeliveryPerson ? "Edit Delivery Person" : "Add New Delivery Person"}
+          okText={editingDeliveryPerson ? "Update" : "Save"}
+          cancelText="Cancel"
+          onCancel={handleCancel}
+          onOk={() => {
+           form
+          .validateFields()
+          .then((values) => {
+           onFinish(values);
+           })
+           .catch((errorInfo) => {
+             console.log("Validation Failed:", errorInfo);
+           });
+           }}
+       okButtonProps={{
+        style: {
+         backgroundColor: 'wheat', // Change to your desired color
+        color: 'white', // Change text color if needed
+        border: '1px solid grey', // Remove border if needed
+        },
+      }}
+    >
+      <DeliveryPersonForm form={form} onFinish={onFinish} />
+        </Modal>
+
         </Content>
       </Layout>
     </LayoutNew>

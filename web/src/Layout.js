@@ -19,31 +19,21 @@ const { Header, Content, Footer, Sider } = Layout;
 
 const adminUserItems = [
 
+  
   {
-    key: "main1",
+    key: "main2",
     icon: <ApartmentOutlined />,
-    label: "Employees",
+    label: "Delivery",
     children: [
-
       {
         key: "1",
         icon: <SyncOutlined />,
         label: "Delivery Employees",
       },
-
-      
-    ],
-  },
-//
-  {
-    key: "main2",
-    icon: <ApartmentOutlined />,
-    label: "Manager",
-    children: [
       {
         key: "11",
         icon: <StockOutlined />,
-        label: "managerDetail",
+        label: "Delivery Details",
       },
 
       
@@ -59,7 +49,7 @@ const adminUserItems = [
       {
         key: "porder",
         icon: <StockOutlined />,
-        label: "managerDetail",
+        label: "package orders",
       },
       {
         key: "addmaterial",
@@ -101,7 +91,18 @@ const adminUserItems = [
     key: "payad",
     icon: <ApartmentOutlined />,
     label: "Payment",
+  },
+  {
+    key: "complaint",
+    icon: <ApartmentOutlined />,
+    label: "Complaints",
+  },
+  {
+    key: "return",
+    icon: <ApartmentOutlined />,
+    label: "Return",
   }
+
 
 ];
 
@@ -156,7 +157,12 @@ const App = ({ children, userType }) => {
     if (item.key === "payad") {
       navigate("/admin-profile");
     }
-
+    if (item.key === "complaint") {
+      navigate("/complaint");
+    }
+    if (item.key === "return") {
+      navigate("/returnpro");
+    }
 
   };
 

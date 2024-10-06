@@ -25,6 +25,9 @@ import Dashboard from './Product/Dashboard';
 
 import AdminProfile from './Payment/Admin_profile'
 
+import Complaint from './complaint/ManageFaqComplain'
+
+import Return from './return/manageReturn'
 
 function App() {
  
@@ -59,6 +62,10 @@ function App() {
         <Route path='/dashboard' element={<Dashboard />} />
     
         <Route path="/admin-profile" element={<AdminProfile />} />
+
+        <Route path="/complaint" element={<Complaint />} />
+        <Route path="/returnpro" element={<Return />} />
+
 
 
         {/* 404 Route */}

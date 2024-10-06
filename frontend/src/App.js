@@ -3,12 +3,12 @@ import Packaging from './Pages/packaging';
 import PackagingMaterials from './Pages/packagingMaterials';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'; 
 import Home from './Pages/Home';
-/*
+
 import Signup from './Pages/Signup'; 
 import VerifyOTP from './Pages/VerifyOTP'; 
 import Login from './Pages/Login'; 
 import Profile from './Pages/Profile'; 
-*/
+
 import Navbar from './Components/Navbar/Navbar';
 
 //import MainLayout from './MainLayout'; // Import the new layout
@@ -47,6 +47,12 @@ import AdminProfile from "./Payment/Admin_profile";
 //package 
 import Package from './package/packaging';
 
+//complaint
+import Complain from './Complaint/ComplaintForm'
+
+//return
+import ReturnForm from './return/ReturnForm'
+
 
 function App() {
   return (
@@ -69,22 +75,12 @@ function App() {
             <Route path='/add-product' element={<AddProduct />} />
             <Route path='/admin-product' element={<AdminView />} />
             <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/profile' element={<Profile />} />
 
 
             <Route path='/home' element={<Product />} />
             <Route path='/itemdetails' element={<Card />} />
 
-
-         {/* Manager Routes
-         <Route path='/table' element={<Table />} />
-         <Route path='/delper' element={<Deli />} />
-
-         <Route path='/manager' element={<ManagerSignUp />} />
-         <Route path='/manager/login' element={<ManagerSignin />} />
-         <Route path='/manager/details' element={<DeliveryDetails />} />
-         <Route path='/manager/update/:id' element={<ManagerUpdateItem />} />
-
- */}
          { /*payment */}
           <Route path="/start" element={<PaymentPage />} />
           <Route path="/credit-card/:paymentId" element={<CreditCardPaymentForm />} />
@@ -95,12 +91,16 @@ function App() {
          
          {/*package*/}
           <Route path='/package' element={<Package />} />
-          {/* Routes without the Navbar
+          {/* Routes without the Navbar */}
           <Route path='/signup' element={<Signup />} />
           <Route path='/verifyotp' element={<VerifyOTP />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/profile' element={<Profile />} />
- */}
+
+
+          <Route path="/complaint" element={<Complain />} />
+          <Route path="/return" element={<ReturnForm />} />
+
+
 
         </Routes>
       </BrowserRouter>
